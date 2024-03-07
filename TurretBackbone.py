@@ -134,4 +134,3 @@ else:
         with open('state.txt') as onOff:
             state = onOff.read()
 
-
