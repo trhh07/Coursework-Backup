@@ -1,9 +1,31 @@
 int datafromUser=0;
+int enA = 9;
+int in1 = 8;
+int in2 = 7;
+int enB = 3;
+int in3 = 5;
+int in4 = 4;
+// sets variables for the pins on the motorboard 
 void setup() {
   
-  pinMode( LED_BUILTIN , OUTPUT ); //declares the pins used and what they'll be used for
-  pinMode( 7, OUTPUT);
-  Serial.begin(9600); //opens serial port 9600 for communication
+  pinMode( LED_BUILTIN , OUTPUT ); //declares the pins used and what theyll be used for
+
+  pinMode(enA, OUTPUT);
+	pinMode(enB, OUTPUT);
+	pinMode(in1, OUTPUT);
+	pinMode(in2, OUTPUT);
+	pinMode(in3, OUTPUT);
+	pinMode(in4, OUTPUT);
+  Serial.begin(9600); 
+  //opens serial port 9600 for communication
+
+  digitalWrite(in1, LOW);
+	digitalWrite(in2, LOW);
+	digitalWrite(in3, LOW);
+	digitalWrite(in4, LOW);
+  analogWrite(enA, 125);
+	analogWrite(enB, 125);
+  //sets motor board pins to base state as well as declare motor speed
 }
 
 void loop() { //infinite loop
@@ -27,14 +49,22 @@ void loop() { //infinite loop
   }
 
   //These two are what is implemented in the main python algorithm
-  if(datafromUser == 'fireOn')
+  if(datafromUser == '2')
   {
-    digitalWrite( 7, HIGH);
-    //turns one of the pins on if the arduino is sent 'fireOn'
+    
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+    //turns the odd pins on if the arduino is sent '2' turning the motor on spinning clockwise
   }
-  else if(datafromUser == 'fireOff')
+  else if(datafromUser == '3')
   {
-    digitalWrite( 7, LOW);
-    //turns one of the pins off if the arduino is sent 'fireOff'
+    
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, LOW);
+    //turns the pins off if the arduino is sent '3'
   }
 }
