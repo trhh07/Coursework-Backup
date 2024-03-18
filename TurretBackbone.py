@@ -26,22 +26,22 @@ def change(txt,log,rev):     #sub program to change file contents
 def auto():                 #sub program to set up automatic firing
     # automatic firing code
     for i in range(4):
-        arduino.write(b'fireOn')
+        arduino.write(b'2')
         time.sleep(1)
-        arduino.write(b'fireOff')
+        arduino.write(b'3')
 
 def semi():             #sub program to set up semi automatic firing
     #semi firing code
-    arduino.write(b'fireOn')
+    arduino.write(b'2')
     time.sleep(1)
-    arduino.write(b'fireOff')
+    arduino.write(b'3')
 
 def burst():        #sub program to set up burst firing
     #burst firing code
     for i in range(2):
-        arduino.write(b'fireOn')
+        arduino.write(b'2')
         time.sleep(1)
-        arduino.write(b'fireOff')
+        arduino.write(b'3')
 
 with open('state.txt') as onOff:   #new system designed to have the UI switch the system on by having the program constantly idle till the state file is switched to "ON"
     state = onOff.read()
