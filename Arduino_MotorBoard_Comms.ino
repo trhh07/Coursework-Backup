@@ -9,22 +9,21 @@ int in4 = 4;
 void setup() {
   
   pinMode( LED_BUILTIN , OUTPUT ); //declares the pins used and what theyll be used for
-
   pinMode(enA, OUTPUT);
-	pinMode(enB, OUTPUT);
-	pinMode(in1, OUTPUT);
-	pinMode(in2, OUTPUT);
-	pinMode(in3, OUTPUT);
-	pinMode(in4, OUTPUT);
+  pinMode(enB, OUTPUT);
+  pinMode(in1, OUTPUT);
+  pinMode(in2, OUTPUT);
+  pinMode(in3, OUTPUT);
+  pinMode(in4, OUTPUT);
   Serial.begin(9600); 
   //opens serial port 9600 for communication
 
   digitalWrite(in1, LOW);
-	digitalWrite(in2, LOW);
-	digitalWrite(in3, LOW);
-	digitalWrite(in4, LOW);
-  analogWrite(enA, 125);
-	analogWrite(enB, 125);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
+  analogWrite(enA, 255);
+  analogWrite(enB, 255);
   //sets motor board pins to base state as well as declare motor speed
 }
 
