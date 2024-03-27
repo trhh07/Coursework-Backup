@@ -28,11 +28,11 @@ def cycle():#sets up cycle def to be used as a button action that sets the fired
     file.flush()
     file.close()
 
-def reset():#sets up reset def to be used as a button action that both resets the ammo count and cycles through the three choices for it
-    settingsA = ['30', '15', '6']
+def reset():#sets up reset def to be used as a button action that both resets the ammo count and cycles through the four choices for it
+    settingsA = ['6', '12', '15', '30']
     global countA
     countA += 1
-    if countA == 3:
+    if countA == 4:
         countA = 0
 
     AmmoCount["text"] = settingsA[countA]#updates the relevant file with the new value
@@ -113,16 +113,19 @@ tLog = 'tally.txt'
 aCount = 'ammoCount.txt'
 def tally_file_change():   #creates subprogram the uses the OS library to make the GUI self updating updating the value of tally and ammo count every 1 second
     global last_mtime
-    mtime = os.path.getmtime(tLog)
+    mtime = os.path.getmtime(aCount)
     if last_mtime is None or mtime > last_mtime:
         with open(tLog) as f:
-            log['text'] = f.read()
+            firstLine = f.readline()
+            log['text'] = firstLine
 
         with open(aCount) as f:
-            if f.read() == '0':
+            firstLine = f.readline()
+            if int(firstLine) <= 0:
                 AmmoCount['text'] = 'RELOAD'
             else:
-                AmmoCount['text'] = f.read()
+                print(f.read())
+                AmmoCount['text'] = firstLine
         last_mtime = mtime
     window.after(1000, tally_file_change)
 
